@@ -1,58 +1,23 @@
 public class Calculate {
-    private String firs, second;
-    private int firstInt, secondInt;
+
+    private int result;
 
 
     public Calculate(char ch, String first, String second) {
-        Convert convert = new Convert();
-        this.firs = first;
-        this.second = second;
+        Convert convert = new Convert(first, second);
         switch (ch) {
-            case '+':
-                if (Character.isDigit(firs.charAt(0))) {
-                    firstInt = Integer.parseInt(firs);
-                    secondInt = Integer.parseInt(second);
-                    System.out.println((firstInt + secondInt));
-                } else {
-                    firstInt = convert.convertStr(firs);
-                    secondInt = convert.convertStr(second);
-                    System.out.println(convert.convertInt(firstInt + secondInt));
-                }
-                break;
+            case '+' -> result = (convert.getIntNum() + convert.getIntNum2());
+            case '-' -> result = (convert.getIntNum() - convert.getIntNum2());
+            case '*' -> result = (convert.getIntNum() * convert.getIntNum2());
+            case '/' -> result = (convert.getIntNum() / convert.getIntNum2());
+        }
 
-            case '-':
-                if (Character.isDigit(firs.charAt(0))) {
-                    firstInt = Integer.parseInt(firs);
-                    secondInt = Integer.parseInt(second);
-                    System.out.println((firstInt - secondInt));
-                } else {
-                    firstInt = convert.convertStr(firs);
-                    secondInt = convert.convertStr(second);
-                    System.out.println(convert.convertInt(firstInt - secondInt));
-                }
-                break;
-            case '*':
-                if (Character.isDigit(firs.charAt(0))) {
-                    firstInt = Integer.parseInt(firs);
-                    secondInt = Integer.parseInt(second);
-                    System.out.println((firstInt * secondInt));
-                } else {
-                    firstInt = convert.convertStr(firs);
-                    secondInt = convert.convertStr(second);
-                    System.out.println(convert.convertInt(firstInt * secondInt));
-                }
-                break;
-            case '/':
-                if (Character.isDigit(firs.charAt(0))) {
-                    firstInt = Integer.parseInt(firs);
-                    secondInt = Integer.parseInt(second);
-                    System.out.println((firstInt / secondInt));
-                } else {
-                    firstInt = convert.convertStr(firs);
-                    secondInt = convert.convertStr(second);
-                    System.out.println(convert.convertInt(firstInt / secondInt));
-                }
-                break;
+        if (!Character.isDigit(first.charAt(0)) && !Character.isDigit(second.charAt(0)) && result > 0) {
+            System.out.println(convert.convertInt(result));
+        } else if (!Character.isDigit(first.charAt(0)) && !Character.isDigit(second.charAt(0)) && result <= 0) {
+            System.out.println("Недопустимое значение");
+        } else {
+            System.out.println(result);
         }
     }
 }

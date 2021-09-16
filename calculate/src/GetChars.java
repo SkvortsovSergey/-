@@ -26,9 +26,6 @@ public class GetChars {
         return ch;
     }
 
-    public int getIndexOfCh() {
-        return indexOfCh;
-    }
 
     public String getSecondStr() {
         return secondStr;
