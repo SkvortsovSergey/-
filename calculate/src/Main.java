@@ -9,7 +9,11 @@ public class Main {
         GetChars getChars = new GetChars(inputStr);
         String firsStr = getChars.getFirsStr(), secondStr = getChars.getSecondStr();
         char ch = getChars.getCh();
-        Calculate calculate = new Calculate(ch, firsStr, secondStr);
+        try {
+            Calculate calculate = new Calculate(ch, firsStr, secondStr);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Неверный формат выражения");
+        }
 
     }
 }
